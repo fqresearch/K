@@ -1302,27 +1302,27 @@ def bot(op):
 #---------------------------------------------------------
 #--------------------------------- TRANSLATE --------------------------------
             elif "/en " in msg.text:
-                txt = msg.text.replace("/en ","")
-                try:
-                    gs = goslate.Goslate()
-                    trs = gs.translate(txt,'en')
-                    cl.sendText(msg.to,trs)
-                    print '[Command] Translate EN'
-            except Exception as njer:
+                   txt = msg.text.replace("/en ","")
+                   try:
+                       gs = goslate.Goslate()
+                       trs = gs.translate(txt,'en')
+                       cl.sendText(msg.to,trs)
+                       print '[Command] Translate EN'
+                   except Exception as njer:
 		        cl.sendText(msg.to, str(njer))
 
             elif "/id " in msg.text:
-                txt = msg.text.replace("/id ","")
-                try:
-                    gs = goslate.Goslate()
-                    trs = gs.translate(txt,'en')
-                    cl.sendText(msg.to,trs)
-                    print '[Command] Translate ID'
-            except Exception as njer:
+                   txt = msg.text.replace("/id ","")
+                   try:
+                        gs = goslate.Goslate()
+                        trs = gs.translate(txt,'en')
+                        cl.sendText(msg.to,trs)
+                        print '[Command] Translate ID'
+                   except Exception as njer:
 		        cl.sendText(msg.to, str(njer))
 #----------------------------------------------------------------------------
 
-			elif "Musik " in msg.text:
+	     elif "Musik " in msg.text:
                 title = msg.text.replace("Musik ","")
                 params={'songname': title}
                 r=requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
