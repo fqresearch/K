@@ -8,6 +8,7 @@ import re,string,os,shutil,urllib2,urllib3,subprocess
 from bs4 import BeautifulSoup
 from urllib import urlopen
 import requests,tempfile
+from gtts import gTTS
 import html5lib
 
 #kk = LINETCR.LINE()
@@ -46,11 +47,11 @@ Bot?  =  Cek akun Bot
 Ginfo  =  Group info
 Id Group = Melihat id grup
 Group pict  =  Melihat pict grup
-Speedbot  =  Cek kecepatan bot
+Respon  =  Cek kecepatan bot
 Up  =  Fungsi spam chat
 hoii  =  memanggil semua orang
-Cek  =  Membuat set point
-Sider  =  Melihat sider dibawah read point
+CCTV  =  Melacak sider
+Ciduk  =  Memciduk sider
 Apakah ...  =  Menanyakan jawaban ya atau tidak
 Creator  =  Melihat pembuat bot
 Hay = menyapa bot
@@ -58,12 +59,13 @@ Pagi
 Siang
 Sore
 Hay [nama bot]
-.instagram = stalk ig orang
-Wikipedia = cari info di wikipedia
-Music = mengunduh konten musik
-Lirik = lirik lagu
-\translate-en = terjemahhin ke inggris
-Jodoh 
+/cekig = stalk ig orang
+/wikipedia = cari info di wikipedia
+Youtube = cari konten youtube
+Jodoh
+Quotes
+Apa ...
+Kapan ...
 """
 
 Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
@@ -1085,8 +1087,8 @@ def bot(op):
 						cl.sendText(msg.to,"Can't be used outside the group")
 					else:
 						cl.sendText(msg.to,"Not for use less than group")
-            elif msg.text.lower() == 'Cek':
-                    cl.sendText(msg.to, "Udah dicek kak.")
+            elif msg.text.lower() == 'CCTV':
+                    cl.sendText(msg.to, "􀔃􀇜black large square􏿿􁄁􀄍cctv􏿿 CCTV ON 􁄁􀄍kamera􏿿 􀔃􀇜black large square􏿿")
                     try:
                         del wait2['readPoint'][msg.to]
                         del wait2['readMember'][msg.to]
@@ -1098,7 +1100,7 @@ def bot(op):
                     wait2['setTime'][msg.to] = datetime.now().strftime('%Y-%m-%d %H:%M')
                     wait2['ROM'][msg.to] = {}
                     print wait2
-            elif msg.text.lower() == 'Sider':
+            elif msg.text.lower() == 'Ciduk':
                     if msg.to in wait2['readPoint']:
                         if wait2["ROM"][msg.to].items() == []:
                             chiya = ""
@@ -1108,18 +1110,30 @@ def bot(op):
                                 print rom
                                 chiya += rom[1] + "\n"
 
-                        cl.sendText(msg.to, "Kok nyimak doang kak?\n%s\nTelah dicek pada:\n[%s]"  % (chiya,setTime[msg.to]))
+                        cl.sendText(msg.to, "Hayoo kk tercyduk 􀄃􀅹hahaha􏿿\n%s\nTercyduk pada:\n[%s]"  % (chiya,setTime[msg.to]))
                     else:
-                        cl.sendText(msg.to, "Ketik 'Cek' dulu kak.")
+                        cl.sendText(msg.to, "Ketik 'CCTV' dulu kak.")
 #-----------------------------------------------
 #--------------------------------- Hy / HAy ---------------------------------
             elif msg.text.lower() in ["hay","Hay","Hi"]:
                 if msg.from_ in admin:
                     beb = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     cl.sendText(msg.to,beb)
+                    bebek = "Hay sayang " + ki.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                    ki.sendText(msg.to,bebek)
+                    bebeg = "Hay sayang " + kk.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                    kk.sendText(msg.to,bebeg)
+                    bebeh = "Hay sayang " + kc.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                    kc.sendText(msg.to,bebeh)
                 else:
                     hi = "Hai kak " + cl.getContact(msg.from_).displayName
                     cl.sendText(msg.to,hi)
+                    hias = "Hai kak " + ki.getContact(msg.from_).displayName
+                    ki.sendText(msg.to,hias)
+                    hiat = "Hai kak " + kk.getContact(msg.from_).displayName
+                    kk.sendText(msg.to,hiat)
+                    hiau = "Hai kak " + kc.getContact(msg.from_).displayName
+                    kc.sendText(msg.to,hiau)
             elif msg.text.lower() in ["hay yupi","Hay yupi","Hai yupi"]:
                 if msg.from_ in admin:
                     bebz = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
@@ -1323,27 +1337,6 @@ def bot(op):
                           except Exception as e:
                               cl.sendText(msg.to, str(e))
 			#---------------------------------------------------------
-
-            elif "/lirik " in msg.text.lower():
-                  songname = msg.text.replace("/lirik ","")
-                  params = {"songname":songname}
-                  r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                  data = r.text
-                  data = json.loads(data)
-                  for song in data:
-                      cl.sendText(msg.to,song[5])
-                      print "[Command] Lirik"
-
-            elif "/lagu " in msg.text.lower():
-                  songname = msg.text.replace("/lagu ","")
-                  params = {"songname":songname}
-                  r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                  data = r.text
-                  data = json.loads(data)
-                  for song in data:
-                      cl.sendText(msg.to,"Judul : " + song[0] + "\nDurasi : " + song[1])
-                      cl.sendAudioWithURL(msg.to,song[3])
-                      print "[Command] Lagu"
 #----------------------------------------------------------------------------
 #--------------------------------- YOUTUBE ----------------------------------
             elif "Youtube " in msg.text:
@@ -1519,7 +1512,7 @@ def bot(op):
     #-------------Fungsi Leave Group Finish---------------#
     
     #-------------Fungsi Tag All Start---------------#
-            elif msg.text in ["ikutan sini","Nongol dong","Oy"]:
+            elif msg.text in ["ikutan sini","Nongol dong","Oi"]:
                   group = cl.getGroup(msg.to)
                   nama = [contact.mid for contact in group.members]
 
@@ -1709,20 +1702,49 @@ def bot(op):
            #----------------Fungsi Unbanned User Target Finish-----------------------#
            
         #-------------Fungsi Spam Start---------------------#
-            elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-                cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
-        #-------------Fungsi Spam Finish---------------------#
+            elif msg.text in ["Oy"]:
+                cl.sendText(msg.to,"￼Oi Oi Oi ￼")
+                ki.sendText(msg.to,"￼Oi Oi Oi ￼")
+                kk.sendText(msg.to,"￼Oi Oi Oi ￼")
+                kc.sendText(msg.to,"￼Oi Oi Oi ￼")
 
+        #-------------Fungsi Spam Finish---------------------#
+	        #-------------Fungsi Spam Start---------------------#
+            elif msg.text in ["Chant","chant"]:
+                cl.sendText(msg.to,"￼￼￼￼￼￼")
+                cl.sendText(msg.to,"Aaa…Yossha-ikuzo")
+                cl.sendText(msg.to,"Taigaa")
+                cl.sendText(msg.to,"Faiyaa")
+                cl.sendText(msg.to,"Saibaa")
+                cl.sendText(msg.to,"Faibaa")
+                cl.sendText(msg.to,"Daibaa")
+                cl.sendText(msg.to,"Baibaa)
+                cl.sendText(msg.to,"Jyaa Jyaa")
+        #-------------Fungsi Spam Finish---------------------#
+	        #-------------Fungsi Spam Start---------------------#
+            elif msg.text in ["Chant2","chant2"]:
+                ki.sendText(msg.to,"￼￼￼￼￼￼")
+                ki.sendText(msg.to,"Aaa…Mou-iccho-ikuzo")
+                ki.sendText(msg.to,"Tora")
+                ki.sendText(msg.to,"Hi")
+                ki.sendText(msg.to,"Jinzou")
+                ki.sendText(msg.to,"Seni")
+                ki.sendText(msg.to,"Ama")
+                ki.sendText(msg.to,"Shindou")
+                ki.sendText(msg.to,"Kasen Tobi Jyokyo")
+        #-------------Fungsi Spam Finish---------------------#
+			    	        #-------------Fungsi Spam Start---------------------#
+            elif msg.text in ["Chant3","chant3"]:
+                ki.sendText(msg.to,"￼￼￼￼￼￼")
+                ki.sendText(msg.to,"Aaa…Mou-iccho-ikuzo")
+                ki.sendText(msg.to,"Chape")
+                ki.sendText(msg.to,"Ape")
+                ki.sendText(msg.to,"Kara")
+                ki.sendText(msg.to,"Kina")
+                ki.sendText(msg.to,"Rara")
+                ki.sendText(msg.to,"Tosuke")
+                ki.sendText(msg.to,"Myohontosuke")
+        #-------------Fungsi Spam Finish---------------------#
         #-------------Fungsi Broadcast Start------------#
             elif "Bc " in msg.text:
 			  if msg.from_ in admin:
