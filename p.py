@@ -1390,64 +1390,6 @@ def bot(op):
                           cl.sendText(msg.to,"Judul: "+judul+"\n\nDurasi: "+durasi+"\n\nLirik:\n\n"+lyric+"\nLink: "+link)
                           cl.sendAudioWithURL(msg.to,link2)
 
-#============ TTS ==============#
-            elif "/say " in msg.text.lower():
-              if msg.from_ in owner:
-                    query = msg.text.lower().replace("/say ","")
-                    with requests.session() as s:
-                        s.headers['user-agent'] = 'Mozilla/5.0'
-                        url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                        params = {
-                                    'language': 'id',
-                                    'speed': '1',
-                                    'query': query
-                                    }
-                        r    = s.get(url, params=params)
-                        mp3  = r.url
-                        ka.sendAudioWithURL(msg.to, mp3)
-#---------------------------------------------------------
-        elif "/say-id: " in msg.text:
-            query = msg.text.replace("/say-id: ","")
-            with requests.session() as s:
-                s.headers['user-agent'] = 'Mozilla/5.0'
-                url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                params = {
-                            'language': 'id',
-                            'speed': '1',
-                            'query': query
-                            }
-                r    = s.get(url, params=params)
-                mp3  = r.url
-                cl.sendAudioWithURL(msg.to, mp3)
-#---------------------------------------------------------
-        elif "/say-en: " in msg.text:
-            query = msg.text.replace("/say-en: ","")
-            with requests.session() as s:
-                s.headers['user-agent'] = 'Mozilla/5.0'
-                url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                params = {
-                            'language': 'en',
-                            'speed': '1',
-                            'query': query
-                            }
-                r    = s.get(url, params=params)
-                mp3  = r.url
-                cl.sendAudioWithURL(msg.to, mp3)
-#---------------------------------------------------------
-        elif "/say-jp: " in msg.text:
-            query = msg.text.replace("/say-jp: ","")
-            with requests.session() as s:
-                s.headers['user-agent'] = 'Mozilla/5.0'
-                url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                params = {
-                            'language': 'ja',
-                            'speed': '1',
-                            'query': query
-                            }
-                r    = s.get(url, params=params)
-                mp3  = r.url
-                cl.sendAudioWithURL(msg.to, mp3)
-#---------------------------------------------------------
             elif '/cekig ' in msg.text.lower():
               try:
                     instagram = msg.text.lower().replace("/cekig ","")
