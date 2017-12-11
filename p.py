@@ -1718,7 +1718,7 @@ def bot(op):
                 cl.sendText(msg.to,"Saibaa")
                 cl.sendText(msg.to,"Faibaa")
                 cl.sendText(msg.to,"Daibaa")
-                cl.sendText(msg.to,"Baibaa)
+                cl.sendText(msg.to,"Baibaa")
                 cl.sendText(msg.to,"Jyaa Jyaa")
         #-------------Fungsi Spam Finish---------------------#
 	        #-------------Fungsi Spam Start---------------------#
