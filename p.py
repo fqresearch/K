@@ -1496,7 +1496,7 @@ def bot(op):
 #---------------------------------------------------------
         elif "/youtube:" in msg.text.lower():
                 query = msg.text.split(":")
-                  try:
+                 try:
                         if len(query) == 3:
                           isi = yt(query[2])
                           hasil = isi[int(query[1])-1]
@@ -1504,7 +1504,7 @@ def bot(op):
                         else:
                           isi = yt(query[1])
                           cl.sendText(msg.to, isi[0])
-                  except Exception as e:
+                 except Exception as e:
                           cl.sendText(msg.to, str(e))
 #---------------------------------------------------------
         elif '/lyric ' in msg.text.lower():
