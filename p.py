@@ -15,19 +15,19 @@ import html5lib
 #kk.loginResult()
 
 cl = LINETCR.LINE()
-cl.login(token="EnkUMxkMojO6cPs9aBac.5gUMnnLdd2hpQQ39vzdhBa.0NBLnbKjToBtOqUUAhPodCR+IkLncG43YEZPoJ93Q/A=")
+cl.login(token="EntzqdNnUZYVIfkaEgqf.rUfb7D9I4YRXjon6FGLadW.qzHNDJfonqtTLQCc2WJ90pODzcaLEZkQeDDrRHUiG8M=")
 cl.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(token="EnZoFqIZLdcyeWgHDTKa.Vkaew7bAxuQ2wpRlpniLMG.ZvOJb9asqHHiAf6UlAs7Tl7qtYL1W/jQIcQQwwW4s4c=")
+ki.login(token="EnW6WwnT5Q3tqaoVrze8.N81Z19f9HnO5Xn8TmpC+sa.DNyBxHMZ8pKPQPiwFGCasM5zsptzMp9WxulEq/yrpdU=")
 ki.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(token="EnW6WwnT5Q3tqaoVrze8.N81Z19f9HnO5Xn8TmpC+sa.DNyBxHMZ8pKPQPiwFGCasM5zsptzMp9WxulEq/yrpdU=")
+kk.login(token="EnZoFqIZLdcyeWgHDTKa.Vkaew7bAxuQ2wpRlpniLMG.ZvOJb9asqHHiAf6UlAs7Tl7qtYL1W/jQIcQQwwW4s4c=")
 kk.loginResult()
 
 kc = LINETCR.LINE()
-kc.login(token="EntzqdNnUZYVIfkaEgqf.rUfb7D9I4YRXjon6FGLadW.qzHNDJfonqtTLQCc2WJ90pODzcaLEZkQeDDrRHUiG8M=")
+kc.login(token="EnkUMxkMojO6cPs9aBac.5gUMnnLdd2hpQQ39vzdhBa.0NBLnbKjToBtOqUUAhPodCR+IkLncG43YEZPoJ93Q/A=")
 kc.loginResult()
 
 cl
@@ -1134,7 +1134,7 @@ def bot(op):
                 else:
                     hi = "Hai kak " + ki.getContact(msg.from_).displayName
                     ki.sendText(msg.to,hi)
-            elif msg.text.lower() in ["hay okta","Hay okta","Hai okta"]:
+            elif msg.text.lower() in ["hay anin","Hay anin","Hai anin"]:
                 if msg.from_ in admin:
                     beby = "Hay sayang " + kk.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     kk.sendText(msg.to,beby)
@@ -1217,40 +1217,13 @@ def bot(op):
                 except:
                     cover = ""
                 cl.sendText(msg.to,"[Display Name]:\n" + anu.displayName + "\n\n[Mid]:\n" + mid + "\n\n[Bio]:\n" + anu.statusMessage + "\n\n[Foto Profile]:\nhttp://dl.profile.line-cdn.net/" + anu.pictureStatus + "\n\n[Cover]:\n" + str(cover))
-#--------------------------------------------------------
-            elif "/send message to: " in msg.text:
-                if msg.from_ in admin:
-                    cond = msg.text.split(" ")
-                    target = int(cond[1])
-                    text = msg.text.replace("/send message to: " + str(target) + "\n/Message: ","")
-                    try:
-                        cl.findAndAddContactsByMid(target)
-                        cl.sendText(target,"Saya membawakan pesan dari presiden untuk anda yang berisi: \"" + text + "\"")
-                        cl.sendText(msg.to,"Berhasil mengirim pesan")
-                    except:
-                        cl.sendText(msg.to,"Gagal mengirim pesan, mungkin midnya salah")
-#---------------------------------------------------------
+
 #Fitur random qoute
             elif msg.text in ["Quote","quote","quotes","Quotes","/quote"]:
-                quote = ['Barangsiapa yang suka meninggalkan barang di tempat umum maka ia akan kehilangan barangnya tersebut','Kunci KESUKSESAN itu cuma satu, yakni lu harus BERHASIL']
+                quote = ['Barangsiapa yang suka meninggalkan barang di tempat umum maka ia akan kehilangan barangnya tersebut','Kunci KESUKSESAN itu cuma satu, yakni lu harus BERHASIL','No Smoking']
                 psn = random.choice(quote)
                 cl.sendText(msg.to,psn)
-#---------------------------------------------------------
-            elif msg.text in ["/time","/waktu"]:
-                timeNow = datetime.now()
-                timeHours = datetime.strftime(timeNow,"(%H:%M)")
-                day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
-                hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
-                bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
-                inihari = datetime.today()
-                hr = inihari.strftime('%A')
-                bln = inihari.strftime('%m')
-                for i in range(len(day)):
-                    if hr == day[i]: hasil = hari[i]
-                for k in range(0, len(bulan)):
-                    if bln == str(k): blan = bulan[k-1]
-                rst = hasil + ", " + inihari.strftime('%d') + " - " + blan + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
-                cl.sendText(msg.to, rst)
+
 #---------------------------------------------------------
             elif "/pict group" in msg.text:
                    group = cl.getGroup(msg.to)
@@ -1352,25 +1325,25 @@ def bot(op):
 			#---------------------------------------------------------
 
             elif "/lirik " in msg.text.lower():
-                songname = msg.text.replace("/lirik ","")
-                params = {"songname":songname}
-                r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                data = r.text
-                data = json.loads(data)
-                for song in data:
-                    cl.sendText(msg.to,song[5])
-                    print "[Command] Lirik"
+                  songname = msg.text.replace("/lirik ","")
+                  params = {"songname":songname}
+                  r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                  data = r.text
+                  data = json.loads(data)
+                  for song in data:
+                      cl.sendText(msg.to,song[5])
+                      print "[Command] Lirik"
 
             elif "/lagu " in msg.text.lower():
-                songname = msg.text.replace("/lagu ","")
-                params = {"songname":songname}
-                r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                data = r.text
-                data = json.loads(data)
-                for song in data:
-                    cl.sendText(msg.to,"Judul : " + song[0] + "\nDurasi : " + song[1])
-                    cl.sendAudioWithURL(msg.to,song[3])
-                    print "[Command] Lagu"
+                  songname = msg.text.replace("/lagu ","")
+                  params = {"songname":songname}
+                  r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                  data = r.text
+                  data = json.loads(data)
+                  for song in data:
+                      cl.sendText(msg.to,"Judul : " + song[0] + "\nDurasi : " + song[1])
+                      cl.sendAudioWithURL(msg.to,song[3])
+                      print "[Command] Lagu"
 #----------------------------------------------------------------------------
 #--------------------------------- YOUTUBE ----------------------------------
             elif "Youtube " in msg.text:
@@ -1497,7 +1470,7 @@ def bot(op):
                   cl.updateGroup(G)
                   Ticket = cl.reissueGroupTicket(msg.to)
 
-            elif msg.text in ["Okta sini"]:
+            elif msg.text in ["Anin sini"]:
               if msg.from_ in admin:
                   x = cl.getGroup(msg.to)
                   x.preventJoinByTicket = False
@@ -1546,7 +1519,7 @@ def bot(op):
     #-------------Fungsi Leave Group Finish---------------#
     
     #-------------Fungsi Tag All Start---------------#
-            elif msg.text in ["ikutan sini","Nongol dong","hoii"]:
+            elif msg.text in ["ikutan sini","Nongol dong","Oy"]:
                   group = cl.getGroup(msg.to)
                   nama = [contact.mid for contact in group.members]
 
@@ -1783,8 +1756,8 @@ def bot(op):
                 cl.sendText(msg.to,"Si mungil yang Limited Edition, dan selalu tersenyum, Aku CindVia.")
             elif msg.text in ["Gracia jiko","gracia jiko","Gracia Jiko"]:
                 ki.sendText(msg.to,"Senyumku akan terekam jelas dalam ingatanmu seperti foto dengan sejuta warna, Namaku Gracia, Always Smile!")
-            elif msg.text in ["Okta jiko","okta jiko","Okta Jiko"]:
-                kk.sendText(msg.to,"Penyuka es batu yang selalu ceria dan akan mebuat hati kamu berdebar. Perkenalkan Aku Okta.")
+            elif msg.text in ["Anin jiko","anin jiko"]:
+                kk.sendText(msg.to,"Bagaikan angin yang akan selalu menghembuskan keceriaan pada hari-harimu. Aku Anin.")
             elif msg.text in ["Ayana jiko","ayana jiko","Ayana Jiko"]:
                 kc.sendText(msg.to,"Haaaiii...! Meskipun mataku sayu, senyumku selalu menghiburmu. Namaku Ayana, panggil aku Achan")
             elif msg.text in ["Assalamualaikum"]:
@@ -1822,7 +1795,7 @@ def bot(op):
       #-------------Fungsi Balesan Respon Finish---------------------#
 
        #-------------Fungsi Speedbot Start---------------------#
-            elif msg.text in ["Speedbot","speedbot", "sp", "speed", "Speed"]:
+            elif msg.text in ["Respon","", "Sp", "speed", "Speed"]:
                 start = time.time()
                 cl.sendText(msg.to, "Bentar ya kak...")
                 elapsed_time = time.time() - start
