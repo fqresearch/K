@@ -1524,21 +1524,21 @@ def bot(op):
             except Exception as njer:
               	cl.sendText(msg.to, str(njer))
 
-            elif "Apa " in msg.text:
-                  tanya = msg.text.replace("Apakah ","")
-                  jawab = ("iya","Tidak","mungkin","bisa jadi")
-                  jawaban = random.choice(jawab)
-                  tts = gTTS(text=jawaban, lang='id')
-                  tts.save('tts.mp3')
-                  cl.sendAudio(msg.to,'tts.mp3')
+        elif "Apa " in msg.text:
+                tanya = msg.text.replace("Apakah ","")
+                jawab = ("iya","Tidak","mungkin","bisa jadi")
+                jawaban = random.choice(jawab)
+                tts = gTTS(text=jawaban, lang='id')
+                tts.save('tts.mp3')
+                cl.sendAudio(msg.to,'tts.mp3')
                   
-            elif "Iraha " in msg.text:
-                  tanya = msg.text.replace("Kapan ","")
-                  jawab = ("kapan  kapan","besok","satu  abad  lagi")
-                  jawaban = random.choice(jawab)
-                  tts = gTTS(text=jawaban, lang='id')
-                  tts.save('tts.mp3')
-                  cl.sendAudio(msg.to,'tts.mp3')
+        elif "Iraha " in msg.text:
+                tanya = msg.text.replace("Kapan ","")
+                jawab = ("kapan  kapan","besok","satu  abad  lagi")
+                jawaban = random.choice(jawab)
+                tts = gTTS(text=jawaban, lang='id')
+                tts.save('tts.mp3')
+                cl.sendAudio(msg.to,'tts.mp3')
 #---------------------------------------------------------
             elif msg.text.lower() == '.reboot':
                     print "[Command]Like executed"
