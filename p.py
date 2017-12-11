@@ -1392,7 +1392,7 @@ def bot(op):
 
 		
 #============ TTS ==============#
-            elif "/say " in msg.text.lower():
+            elif '/say ' in msg.text.lower():
                   if msg.from_ in owner:
                       query = msg.text.lower().replace("/say ","")
                       with requests.session() as s:
@@ -1407,7 +1407,7 @@ def bot(op):
                           mp3  = r.url
                           ka.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-            elif "/say-id: " in msg.text:
+            elif '/say-id: ' in msg.text:
             	      query = msg.text.replace("/say-id: ","")
              	      with requests.session() as s:
                 	  s.headers['user-agent'] = 'Mozilla/5.0'
@@ -1421,7 +1421,7 @@ def bot(op):
                 	  mp3  = r.url
                 	  cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-            elif "/say-en: " in msg.text:
+            elif '/say-en: ' in msg.text:
             	      query = msg.text.replace("/say-en: ","")
                       with requests.session() as s:
                 	  s.headers['user-agent'] = 'Mozilla/5.0'
@@ -1435,7 +1435,7 @@ def bot(op):
                 	  mp3  = r.url
                 	  cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-            elif "/say-jp: " in msg.text:
+            elif '/say-jp: ' in msg.text:
             	      query = msg.text.replace("/say-jp: ","")
             	      with requests.session() as s:
                 	  s.headers['user-agent'] = 'Mozilla/5.0'
