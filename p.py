@@ -1345,7 +1345,7 @@ def bot(op):
 
 
 #----------------------------------------------------------------------------
-             elif "/ig " in msg.text:
+            elif "/ig " in msg.text:
                  print "[Command] IG executing"
                  stalkID = msg.text.replace("/ig ","")
                  subprocess.call(["instaLooter",stalkID,"tmp/","-n","1"])   
