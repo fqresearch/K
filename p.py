@@ -1255,7 +1255,7 @@ def bot(op):
                elif "/pict group" in msg.text:
                    group = cl.getGroup(msg.to)
                    path ="http://dl.profile.line-cdn.net/" + group.pictureStatus)
-                   cl.sendImageWithURL(msg.to, path)
+                cl.sendImageWithURL(msg.to, path)
 #---------------------------------------------------------
 #---------------------------------------------------------
             elif "/steal home @" in msg.text:
