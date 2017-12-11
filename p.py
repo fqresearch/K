@@ -1386,7 +1386,7 @@ def bot(op):
                    	  lyric = lyric.replace('al:','Album -')
                     	  removeString = "[1234567890.:]"
                     	  for char in removeString:
-                          lyric = lyric.replace(char,'')
+                              lyric = lyric.replace(char,'')
                           cl.sendText(msg.to,"Judul: "+judul+"\n\nDurasi: "+durasi+"\n\nLirik:\n\n"+lyric+"\nLink: "+link)
                           cl.sendAudioWithURL(msg.to,link2)
 
@@ -1479,7 +1479,7 @@ def bot(op):
                     tts.save('tts.mp3')
                     cl.sendAudio(msg.to,'tts.mp3')
                   
-            elif "Iraha " in msg.text:
+            elif "Kapan " in msg.text:
                     tanya = msg.text.replace("Kapan ","")
                     jawab = ("kapan  kapan","besok","satu  abad  lagi")
                     jawaban = random.choice(jawab)
