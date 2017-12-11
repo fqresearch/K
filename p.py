@@ -1368,27 +1368,7 @@ def bot(op):
 					ki.sendText(msg.to,(bctxt))
 					kk.sendText(msg.to,(bctxt))
 					
-            elif '.instagram ' in msg.text.lower():
-                try:
-                    instagram = msg.text.lower().replace(".instagram ","")
-                    html = requests.get('https://www.instagram.com/' + instagram + '/?')
-                    soup = BeautifulSoup(html.text, 'html5lib')
-                    data = soup.find_all('meta', attrs={'property':'og:description'})
-                    text = data[0].get('content').split()
-                    data1 = soup.find_all('meta', attrs={'property':'og:image'})
-                    text1 = data1[0].get('content').split()
-                    user = "Name: " + text[-2] + "\n"
-                    user1 = "Username: " + text[-1] + "\n"
-                    followers = "Followers: " + text[0] + "\n"
-                    following = "Following: " + text[2] + "\n"
-                    post = "Post: " + text[4] + "\n"
-                    link = "Link: " + "https://www.instagram.com/" + instagram
-                    detail = "========INSTAGRAM INFO USER========\n"
-                    details = "\n========INSTAGRAM INFO USER========"
-                    cl.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
-                    cl.sendImageWithURL(msg.to, text1[0])
-                except Exception as njer:
-                	cl.sendText(msg.to, str(njer))
+
 #=============== CEK SPEK SRV =============
        	    elif "/cek server" in msg.text:
             	    a="lscpu | grep -i 'model name'|awk -F : '{print $2}'"
@@ -1492,27 +1472,27 @@ def bot(op):
                 mp3  = r.url
                 cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-            elif '/cekig ' in msg.text.lower():
-                try:
-                    instagram = msg.text.lower().replace("/cekig ","")
-                    html = requests.get('https://www.instagram.com/' + instagram + '/?')
-                    soup = BeautifulSoup(html.text, 'html5lib')
-                    data = soup.find_all('meta', attrs={'property':'og:description'})
-                    text = data[0].get('content').split()
-                    data1 = soup.find_all('meta', attrs={'property':'og:image'})
-                    text1 = data1[0].get('content').split()
-                    user = "Nama: " + text[-2] + "\n"
-                    user1 = text[-1]
-                    followers = "Pengikut: " + text[0] + "\n"
-                    following = "Mengikuti: " + text[2] + "\n"
-                    post = "Post: " + text[4] + "\n"
-                    link = "Link: " + "https://www.instagram.com/" + instagram
-                    detail = "Info Akun: " + user1 + "\n\n"
-                    details = " "
-                    cl.sendText(msg.to, detail + user + followers + following + post + link + details)
-                    cl.sendImageWithURL(msg.to, text1[0])
-                except Exception as njer:
-                	cl.sendText(msg.to, str(njer))
+        elif '/cekig ' in msg.text.lower():
+            try:
+                instagram = msg.text.lower().replace("/cekig ","")
+                html = requests.get('https://www.instagram.com/' + instagram + '/?')
+                soup = BeautifulSoup(html.text, 'html5lib')
+                data = soup.find_all('meta', attrs={'property':'og:description'})
+                text = data[0].get('content').split()
+                data1 = soup.find_all('meta', attrs={'property':'og:image'})
+                text1 = data1[0].get('content').split()
+                user = "Nama: " + text[-2] + "\n"
+                user1 = text[-1]
+                followers = "Pengikut: " + text[0] + "\n"
+                following = "Mengikuti: " + text[2] + "\n"
+                post = "Post: " + text[4] + "\n"
+                link = "Link: " + "https://www.instagram.com/" + instagram
+                detail = "Info Akun: " + user1 + "\n\n"
+                details = " "
+                cl.sendText(msg.to, detail + user + followers + following + post + link + details)
+                cl.sendImageWithURL(msg.to, text1[0])
+            except Exception as njer:
+              	cl.sendText(msg.to, str(njer))
 #---------------------------------------------------------
             elif "/youtube:" in msg.text.lower():
                    query = msg.text.split(":")
