@@ -1324,45 +1324,9 @@ def bot(op):
 		        cl.sendText(msg.to, str(njer))
 #----------------------------------------------------------------------------
 
-	    elif "Musik " in msg.text:
-                title = msg.text.replace("Musik ","")
-                params={'songname': title}
-                r=requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                data=r.text
-                data=json.loads(data)
-                for song in data:
-                    songz = song[5].encode('utf-8')
-                    link = song[4].encode('utf-8')
-                    judul = song[0].encode('utf-8')
-                    durasi = song[1].encode('utf-8')
-                    link2 = song[3].encode('utf-8')
-                    lyric = songz.replace('ti:','Title -')
-                    lyric = lyric.replace('ar:','Artist -')
-                    lyric = lyric.replace('al:','Album -')
-                    removeString = "[1234567890.:]"
-                    for char in removeString:
-                        lyric = lyric.replace(char,'')
-                    cl.sendText(msg.to,"Judul: "+judul+"\n\nDurasi: "+durasi+"\n\nLirik:\n\n"+lyric+"\nLink: "+link)
-                    cl.sendAudioWithURL(msg.to,link2)
 
 
 #----------------------------------------------------------------------------
-            elif "/ig " in msg.text:
-                    print "[Command] IG executing"
-                    stalkID = msg.text.replace("/ig ","")
-                    subprocess.call(["instaLooter",stalkID,"tmp/","-n","1"])   
-                    files = glob.glob("tmp/*.jpg")
-                    for file in files:
-                        os.rename(file,"tmp/tmp.jpg")
-                    fileTmp = glob.glob("tmp/tmp.jpg")
-                    if not fileTmp:
-                        cl.sendText(msg.to, "Image not found, maybe the account haven't post a single picture or the account is private")
-                        print "[Command]IG,executed - no image found"
-                    else:
-                        image = upload_tempimage(client)
-                        cl.sendText(msg.to, format(image['link']))
-                        subprocess.call(["sudo","rm","-rf","tmp/tmp.jpg"])
-                        print "[Command]Stalk executed - succes"   
 
             elif "Bilang " in msg.text:
 					bctxt = msg.text.replace("Bilang ","")
@@ -1412,73 +1376,78 @@ def bot(op):
                       data = r.text
                       data = json.loads(data)
                       for song in data:
-                          hasil = 'This is Your Music\n'
-                          hasil += 'Judul : ' + song[0]
-                          hasil += '\nDurasi : ' + song[1]
-                          hasil += '\nLink Download : ' + song[4]
-                          cl.sendText(msg.to, hasil)
-                          cl.sendText(msg.to, "Please Wait for audio...")
-                          cl.sendAudioWithURL(msg.to, song[4])
-                  except Exception as njer:
-                      cl.sendText(msg.to, str(njer))
+                    	  songz = song[5].encode('utf-8')
+                    	  link = song[4].encode('utf-8')
+                    	  judul = song[0].encode('utf-8')
+                   	  durasi = song[1].encode('utf-8')
+                    	  link2 = song[3].encode('utf-8')
+                    	  lyric = songz.replace('ti:','Title -')
+                   	  lyric = lyric.replace('ar:','Artist -')
+                   	  lyric = lyric.replace('al:','Album -')
+                    	  removeString = "[1234567890.:]"
+                    	  for char in removeString:
+                          lyric = lyric.replace(char,'')
+                          cl.sendText(msg.to,"Judul: "+judul+"\n\nDurasi: "+durasi+"\n\nLirik:\n\n"+lyric+"\nLink: "+link)
+                          cl.sendAudioWithURL(msg.to,link2)
+
 		
 #============ TTS ==============#
             elif "/say " in msg.text.lower():
-              if msg.from_ in owner:
-                    query = msg.text.lower().replace("/say ","")
-                    with requests.session() as s:
-                        s.headers['user-agent'] = 'Mozilla/5.0'
-                        url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                        params = {
-                                    'language': 'id',
-                                    'speed': '1',
-                                    'query': query
-                                    }
-                        r    = s.get(url, params=params)
-                        mp3  = r.url
-                        ka.sendAudioWithURL(msg.to, mp3)
+                  if msg.from_ in owner:
+                      query = msg.text.lower().replace("/say ","")
+                      with requests.session() as s:
+                          s.headers['user-agent'] = 'Mozilla/5.0'
+                          url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                          params = {
+                                       'language': 'id',
+                                       'speed': '1',
+                                       'query': query
+                                       }
+                          r    = s.get(url, params=params)
+                          mp3  = r.url
+                          ka.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
             elif "/say-id: " in msg.text:
-            	    query = msg.text.replace("/say-id: ","")
-            	    with requests.session() as s:
-                	s.headers['user-agent'] = 'Mozilla/5.0'
-                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                	params = {
-                         	    'language': 'id',
-                            	    'speed': '1',
-                            	    'query': query
-                    	            }
-                	r    = s.get(url, params=params)
-                	mp3  = r.url
-                	cl.sendAudioWithURL(msg.to, mp3)
+            	      query = msg.text.replace("/say-id: ","")
+             	      with requests.session() as s:
+                	  s.headers['user-agent'] = 'Mozilla/5.0'
+                	  url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	  params = {
+                         	       'language': 'id',
+                            	       'speed': '1',
+                            	       'query': query
+                    	               }
+                	  r    = s.get(url, params=params)
+                	  mp3  = r.url
+                	  cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
             elif "/say-en: " in msg.text:
-            	    query = msg.text.replace("/say-en: ","")
-                    with requests.session() as s:
-                	s.headers['user-agent'] = 'Mozilla/5.0'
-                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                	params = {
-                            	    'language': 'en',
-                            	    'speed': '1',
-                            	    'query': query
-                            	    }
-                	r    = s.get(url, params=params)
-                	mp3  = r.url
-                	cl.sendAudioWithURL(msg.to, mp3)
+            	      query = msg.text.replace("/say-en: ","")
+                      with requests.session() as s:
+                	  s.headers['user-agent'] = 'Mozilla/5.0'
+                	  url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	  params = {
+                            	       'language': 'en',
+                            	       'speed': '1',
+                            	       'query': query
+                            	       }
+                	  r    = s.get(url, params=params)
+                	  mp3  = r.url
+                	  cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
             elif "/say-jp: " in msg.text:
-            	    query = msg.text.replace("/say-jp: ","")
-            	    with requests.session() as s:
-                	s.headers['user-agent'] = 'Mozilla/5.0'
-                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                	params = {
-                            	    'language': 'ja',
-                        	    'speed': '1',
-                       	            'query': query
-                            	    }
-                	r    = s.get(url, params=params)
-                	mp3  = r.url
-                	cl.sendAudioWithURL(msg.to, mp3)
+            	      query = msg.text.replace("/say-jp: ","")
+            	      with requests.session() as s:
+                	  s.headers['user-agent'] = 'Mozilla/5.0'
+                	  url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	  params = {
+                            	       'language': 'ja',
+                        	       'speed': '1',
+                       	               'query': query
+                            	       }
+                	  r    = s.get(url, params=params)
+                	  mp3  = r.url
+                	  cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
             elif '/cekig ' in msg.text.lower():
               try:
