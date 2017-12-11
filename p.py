@@ -3,13 +3,11 @@
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
 from datetime import datetime
-from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,requests,urllib,wikipedia,tweepy,ctypes,goslate
 import re,string,os,shutil,urllib2,urllib3,subprocess
 from bs4 import BeautifulSoup
 from urllib import urlopen
 import requests,tempfile
-import subprocess as cmd
 import html5lib
 
 #kk = LINETCR.LINE()
@@ -1317,16 +1315,52 @@ def bot(op):
                    txt = msg.text.replace("/id ","")
                    try:
                         gs = goslate.Goslate()
-                        trs = gs.translate(txt,'id')
+                        trs = gs.translate(txt,'en')
                         cl.sendText(msg.to,trs)
                         print '[Command] Translate ID'
                    except Exception as njer:
 		        cl.sendText(msg.to, str(njer))
 #----------------------------------------------------------------------------
 
+	    elif "Musik " in msg.text:
+                title = msg.text.replace("Musik ","")
+                params={'songname': title}
+                r=requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                data=r.text
+                data=json.loads(data)
+                for song in data:
+                    songz = song[5].encode('utf-8')
+                    link = song[4].encode('utf-8')
+                    judul = song[0].encode('utf-8')
+                    durasi = song[1].encode('utf-8')
+                    link2 = song[3].encode('utf-8')
+                    lyric = songz.replace('ti:','Title -')
+                    lyric = lyric.replace('ar:','Artist -')
+                    lyric = lyric.replace('al:','Album -')
+                    removeString = "[1234567890.:]"
+                    for char in removeString:
+                        lyric = lyric.replace(char,'')
+                    cl.sendText(msg.to,"Judul: "+judul+"\n\nDurasi: "+durasi+"\n\nLirik:\n\n"+lyric+"\nLink: "+link)
+                    cl.sendAudioWithURL(msg.to,link2)
 
 
 #----------------------------------------------------------------------------
+            elif "/ig " in msg.text:
+                 print "[Command] IG executing"
+                 stalkID = msg.text.replace("/ig ","")
+                 subprocess.call(["instaLooter",stalkID,"tmp/","-n","1"])   
+                 files = glob.glob("tmp/*.jpg")
+                 for file in files:
+                     os.rename(file,"tmp/tmp.jpg")
+                 fileTmp = glob.glob("tmp/tmp.jpg")
+                 if not fileTmp:
+                     cl.sendText(msg.to, "Image not found, maybe the account haven't post a single picture or the account is private")
+                     print "[Command]IG,executed - no image found"
+                 else:
+                     image = upload_tempimage(client)
+                     cl.sendText(msg.to, format(image['link']))
+                     subprocess.call(["sudo","rm","-rf","tmp/tmp.jpg"])
+                     print "[Command]Stalk executed - succes"   
 
             elif "Bilang " in msg.text:
 					bctxt = msg.text.replace("Bilang ","")
@@ -1335,6 +1369,33 @@ def bot(op):
 					kk.sendText(msg.to,(bctxt))
 					
 
+#=============== CEK SPEK SRV =============
+       	    elif "/cek server" in msg.text:
+            	    a="lscpu | grep -i 'model name'|awk -F : '{print $2}'"
+            	    b="lscpu | grep -i 'architecture' | awk -F : '{print $2}'"
+            	    c="cat /etc/redhat-release"
+            	    d="lsblk | awk '{print $4}' | head -2 | tail -1"
+            	    e="free -lm | awk '{print $2}'| head -2|tail -1"
+            	    g="lscpu | grep -i 'virtualization' | awk -F : '{print $2}'"
+            	    h="lscpu | grep -i 'CPU op-mode' | awk -F : '{print $2}'"
+            	    cmdlis = [a,b,c,d,e,g,h]
+            	    rio = "Server\n\n"
+           	    for i in cmdlis:
+                	c=cmd.getoutput(i)
+                	rio += c.strip()+"\n"
+ 		    cl.sendMessage(msg.to, rio)
+#---------------------------------------------------------
+            elif "/cek " in msg.text:
+                tanggal = msg.text.replace("/cek ","")
+                r=requests.get('https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal='+tanggal)
+                data=r.text
+                data=json.loads(data)
+                lahir = data["data"]["lahir"]
+                usia = data["data"]["usia"]
+                ultah = data["data"]["ultah"]
+                zodiak = data["data"]["zodiak"]
+                cl.sendText(msg.to,"Tanggal Lahir : "+lahir+"\n\nUmur : "+usia+"\n\nUltah : "+ultah+"\n\nZodiak : "+zodiak)
+#---------------------------------------------------------
             elif '/wikipedia ' in msg.text.lower():
                   try:
                       wiki = msg.text.lower().replace("/wikipedia ","")
@@ -1353,43 +1414,94 @@ def bot(op):
                               cl.sendText(msg.to, pesan)
                           except Exception as e:
                               cl.sendText(msg.to, str(e))
-            elif '/youtube ' in msg.text.lower():
-                  query = msg.text.replace("/youtube ","")
-                  with requests.session() as s:
-                      s.headers['user-agent'] = 'Mozilla/5.0'
-                      url = 'http://www.youtube.com/results'
-                      params = {'search_query': query}
-                      r = s.get(url, params=params)
-                      soup = BeautifulSoup(r.content, 'html5lib')
-                      hasil = ""
-                      for a in soup.select('.yt-lockup-title > a[title]'):
-                          if '&list=' not in a['href']:
-                              hasil += ''.join((a['title'],'\nhttp://www.youtube.com' + a['href'],'\n\n'))
-                      cl.sendText(msg.to,hasil)
-                      print '[Command] Youtube Search'
-		
-            elif 'music ' in msg.text.lower():
-                  try:
-                      songname = msg.text.lower().replace('music ','')
+			#---------------------------------------------------------
+            elif "/youtube:" in msg.text.lower():
+                query = msg.text.split(":")
+                try:
+                      if len(query) == 3:
+                          isi = yt(query[2])
+                          hasil = isi[int(query[1])-1]
+                          cl.sendText(msg.to, hasil)
+                      else:
+                          isi = yt(query[1])
+                          cl.sendText(msg.to, isi[0])
+                except Exception as e:
+                          cl.sendText(msg.to, str(e))
+#---------------------------------------------------------
+            elif '/lyric ' in msg.text.lower():
+                try:
+                      songname = msg.text.lower().replace('/lyric ','')
                       params = {'songname': songname}
                       r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
                       data = r.text
                       data = json.loads(data)
                       for song in data:
-                    	  songz = song[5].encode('utf-8')
-                    	  link = song[4].encode('utf-8')
-                    	  judul = song[0].encode('utf-8')
-                   	  durasi = song[1].encode('utf-8')
-                    	  link2 = song[3].encode('utf-8')
-                    	  lyric = songz.replace('ti:','Title -')
-                   	  lyric = lyric.replace('ar:','Artist -')
-                   	  lyric = lyric.replace('al:','Album -')
-                    	  removeString = "[1234567890.:]"
-                    	  for char in removeString:
-                              lyric = lyric.replace(char,'')
-                          cl.sendText(msg.to,"Judul: "+judul+"\n\nDurasi: "+durasi+"\n\nLirik:\n\n"+lyric+"\nLink: "+link)
-                          cl.sendAudioWithURL(msg.to,link2)
-
+                          hasil = 'Lyric Lagu : '
+                          hasil += song[0]
+                          hasil += '\n\n'
+                          hasil += song[5]
+                          cl.sendText(msg.to, hasil)
+                except Exception as wak:
+                          cl.sendText(msg.to, str(wak))
+#---------------------------------------------------------
+#============ TTS ==============#
+            elif "/say " in msg.text.lower():
+              if msg.from_ in owner:
+                    query = msg.text.lower().replace("/say ","")
+                    with requests.session() as s:
+                        s.headers['user-agent'] = 'Mozilla/5.0'
+                        url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                        params = {
+                                    'language': 'id',
+                                    'speed': '1',
+                                    'query': query
+                                    }
+                        r    = s.get(url, params=params)
+                        mp3  = r.url
+                        ka.sendAudioWithURL(msg.to, mp3)
+#---------------------------------------------------------
+            elif "/say-id: " in msg.text:
+            	    query = msg.text.replace("/say-id: ","")
+            	    with requests.session() as s:
+                	s.headers['user-agent'] = 'Mozilla/5.0'
+                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	params = {
+                         	    'language': 'id',
+                            	    'speed': '1',
+                            	    'query': query
+                    	            }
+                	r    = s.get(url, params=params)
+                	mp3  = r.url
+                	cl.sendAudioWithURL(msg.to, mp3)
+#---------------------------------------------------------
+            elif "/say-en: " in msg.text:
+            	    query = msg.text.replace("/say-en: ","")
+                    with requests.session() as s:
+                	s.headers['user-agent'] = 'Mozilla/5.0'
+                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	params = {
+                            	    'language': 'en',
+                            	    'speed': '1',
+                            	    'query': query
+                            	    }
+                	r    = s.get(url, params=params)
+                	mp3  = r.url
+                	cl.sendAudioWithURL(msg.to, mp3)
+#---------------------------------------------------------
+            elif "/say-jp: " in msg.text:
+            	    query = msg.text.replace("/say-jp: ","")
+            	    with requests.session() as s:
+                	s.headers['user-agent'] = 'Mozilla/5.0'
+                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	params = {
+                            	    'language': 'ja',
+                        	    'speed': '1',
+                       	            'query': query
+                            	    }
+                	r    = s.get(url, params=params)
+                	mp3  = r.url
+                	cl.sendAudioWithURL(msg.to, mp3)
+#---------------------------------------------------------
             elif '/cekig ' in msg.text.lower():
               try:
                     instagram = msg.text.lower().replace("/cekig ","")
@@ -1420,7 +1532,7 @@ def bot(op):
                     tts.save('tts.mp3')
                     cl.sendAudio(msg.to,'tts.mp3')
                   
-            elif "Kapan " in msg.text:
+            elif "Iraha " in msg.text:
                     tanya = msg.text.replace("Kapan ","")
                     jawab = ("kapan  kapan","besok","satu  abad  lagi")
                     jawaban = random.choice(jawab)
