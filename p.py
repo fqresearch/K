@@ -1252,10 +1252,10 @@ def bot(op):
                 rst = hasil + ", " + inihari.strftime('%d') + " - " + blan + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
                 cl.sendText(msg.to, rst)
 #---------------------------------------------------------
-               elif "/pict group" in msg.text:
+            elif "/pict group" in msg.text:
                    group = cl.getGroup(msg.to)
                    path ="http://dl.profile.line-cdn.net/" + group.pictureStatus)
-                cl.sendImageWithURL(msg.to, path)
+                       cl.sendImageWithURL(msg.to, path)
 #---------------------------------------------------------
 #---------------------------------------------------------
             elif "/steal home @" in msg.text:
