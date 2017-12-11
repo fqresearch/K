@@ -1494,8 +1494,8 @@ def bot(op):
             except Exception as njer:
               	cl.sendText(msg.to, str(njer))
 #---------------------------------------------------------
-            elif "/youtube:" in msg.text.lower():
-                   query = msg.text.split(":")
+        elif "/youtube:" in msg.text.lower():
+                query = msg.text.split(":")
                    try:
                        if len(query) == 3:
                            isi = yt(query[2])
