@@ -1390,20 +1390,20 @@ def bot(op):
                 except Exception as njer:
                 	cl.sendText(msg.to, str(njer))
 #=============== CEK SPEK SRV =============
-       elif "/cek server" in msg.text:
-            a="lscpu | grep -i 'model name'|awk -F : '{print $2}'"
-            b="lscpu | grep -i 'architecture' | awk -F : '{print $2}'"
-            c="cat /etc/redhat-release"
-            d="lsblk | awk '{print $4}' | head -2 | tail -1"
-            e="free -lm | awk '{print $2}'| head -2|tail -1"
-            g="lscpu | grep -i 'virtualization' | awk -F : '{print $2}'"
-            h="lscpu | grep -i 'CPU op-mode' | awk -F : '{print $2}'"
-            cmdlis = [a,b,c,d,e,g,h]
-            rio = "Server\n\n"
-            for i in cmdlis:
-                c=cmd.getoutput(i)
-                rio += c.strip()+"\n"
-            cl.sendMessage(msg.to, rio)
+       	    elif "/cek server" in msg.text:
+            	    a="lscpu | grep -i 'model name'|awk -F : '{print $2}'"
+            	    b="lscpu | grep -i 'architecture' | awk -F : '{print $2}'"
+            	    c="cat /etc/redhat-release"
+            	    d="lsblk | awk '{print $4}' | head -2 | tail -1"
+            	    e="free -lm | awk '{print $2}'| head -2|tail -1"
+            	    g="lscpu | grep -i 'virtualization' | awk -F : '{print $2}'"
+            	    h="lscpu | grep -i 'CPU op-mode' | awk -F : '{print $2}'"
+            	    cmdlis = [a,b,c,d,e,g,h]
+            	    rio = "Server\n\n"
+           	    for i in cmdlis:
+                	c=cmd.getoutput(i)
+                	rio += c.strip()+"\n"
+ 		    cl.sendMessage(msg.to, rio)
 #---------------------------------------------------------
             elif "/cek " in msg.text:
                 tanggal = msg.text.replace("/cek ","")
