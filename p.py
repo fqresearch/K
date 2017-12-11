@@ -1414,6 +1414,36 @@ def bot(op):
                               cl.sendText(msg.to, pesan)
                           except Exception as e:
                               cl.sendText(msg.to, str(e))
+			#---------------------------------------------------------
+            elif "/youtube:" in msg.text.lower():
+                query = msg.text.split(":")
+                  try:
+                      if len(query) == 3:
+                          isi = yt(query[2])
+                          hasil = isi[int(query[1])-1]
+                          cl.sendText(msg.to, hasil)
+                      else:
+                          isi = yt(query[1])
+                          cl.sendText(msg.to, isi[0])
+                  except Exception as e:
+                          cl.sendText(msg.to, str(e))
+#---------------------------------------------------------
+            elif '/lyric ' in msg.text.lower():
+                  try:
+                      songname = msg.text.lower().replace('/lyric ','')
+                      params = {'songname': songname}
+                      r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                      data = r.text
+                      data = json.loads(data)
+                      for song in data:
+                          hasil = 'Lyric Lagu : '
+                          hasil += song[0]
+                          hasil += '\n\n'
+                          hasil += song[5]
+                          cl.sendText(msg.to, hasil)
+                  except Exception as wak:
+                          cl.sendText(msg.to, str(wak))
+#---------------------------------------------------------
 #============ TTS ==============#
             elif "/say " in msg.text.lower():
               if msg.from_ in owner:
@@ -1493,36 +1523,7 @@ def bot(op):
                 cl.sendImageWithURL(msg.to, text1[0])
             except Exception as njer:
               	cl.sendText(msg.to, str(njer))
-#---------------------------------------------------------
-        elif "/youtube:" in msg.text.lower():
-                query = msg.text.split(":")
-                 try:
-                        if len(query) == 3:
-                          isi = yt(query[2])
-                          hasil = isi[int(query[1])-1]
-                          cl.sendText(msg.to, hasil)
-                        else:
-                          isi = yt(query[1])
-                          cl.sendText(msg.to, isi[0])
-                 except Exception as e:
-                          cl.sendText(msg.to, str(e))
-#---------------------------------------------------------
-        elif '/lyric ' in msg.text.lower():
-                try:
-                  songname = msg.text.lower().replace('/lyric ','')
-                  params = {'songname': songname}
-                  r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                  data = r.text
-                  data = json.loads(data)
-                  for song in data:
-                        hasil = 'Lyric Lagu : '
-                        hasil += song[0]
-                        hasil += '\n\n'
-                        hasil += song[5]
-                        cl.sendText(msg.to, hasil)
-                except Exception as wak:
-                        cl.sendText(msg.to, str(wak))
-#---------------------------------------------------------
+
             elif "Apa " in msg.text:
                   tanya = msg.text.replace("Apakah ","")
                   jawab = ("iya","Tidak","mungkin","bisa jadi")
