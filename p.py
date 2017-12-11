@@ -1460,85 +1460,85 @@ def bot(op):
                         mp3  = r.url
                         ka.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-        elif "/say-id: " in msg.text:
-            query = msg.text.replace("/say-id: ","")
-            with requests.session() as s:
-                s.headers['user-agent'] = 'Mozilla/5.0'
-                url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                params = {
-                            'language': 'id',
-                            'speed': '1',
-                            'query': query
-                            }
-                r    = s.get(url, params=params)
-                mp3  = r.url
-                cl.sendAudioWithURL(msg.to, mp3)
+            elif "/say-id: " in msg.text:
+            	    query = msg.text.replace("/say-id: ","")
+            	    with requests.session() as s:
+                	s.headers['user-agent'] = 'Mozilla/5.0'
+                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	params = {
+                         	    'language': 'id',
+                            	    'speed': '1',
+                            	    'query': query
+                    	            }
+                	r    = s.get(url, params=params)
+                	mp3  = r.url
+                	cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-        elif "/say-en: " in msg.text:
-            query = msg.text.replace("/say-en: ","")
-            with requests.session() as s:
-                s.headers['user-agent'] = 'Mozilla/5.0'
-                url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                params = {
-                            'language': 'en',
-                            'speed': '1',
-                            'query': query
-                            }
-                r    = s.get(url, params=params)
-                mp3  = r.url
-                cl.sendAudioWithURL(msg.to, mp3)
+            elif "/say-en: " in msg.text:
+            	    query = msg.text.replace("/say-en: ","")
+                    with requests.session() as s:
+                	s.headers['user-agent'] = 'Mozilla/5.0'
+                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	params = {
+                            	    'language': 'en',
+                            	    'speed': '1',
+                            	    'query': query
+                            	    }
+                	r    = s.get(url, params=params)
+                	mp3  = r.url
+                	cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-        elif "/say-jp: " in msg.text:
-            query = msg.text.replace("/say-jp: ","")
-            with requests.session() as s:
-                s.headers['user-agent'] = 'Mozilla/5.0'
-                url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
-                params = {
-                            'language': 'ja',
-                            'speed': '1',
-                            'query': query
-                            }
-                r    = s.get(url, params=params)
-                mp3  = r.url
-                cl.sendAudioWithURL(msg.to, mp3)
+            elif "/say-jp: " in msg.text:
+            	    query = msg.text.replace("/say-jp: ","")
+            	    with requests.session() as s:
+                	s.headers['user-agent'] = 'Mozilla/5.0'
+                	url    = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                	params = {
+                            	    'language': 'ja',
+                        	    'speed': '1',
+                       	            'query': query
+                            	    }
+                	r    = s.get(url, params=params)
+                	mp3  = r.url
+                	cl.sendAudioWithURL(msg.to, mp3)
 #---------------------------------------------------------
-        elif '/cekig ' in msg.text.lower():
-            try:
-                instagram = msg.text.lower().replace("/cekig ","")
-                html = requests.get('https://www.instagram.com/' + instagram + '/?')
-                soup = BeautifulSoup(html.text, 'html5lib')
-                data = soup.find_all('meta', attrs={'property':'og:description'})
-                text = data[0].get('content').split()
-                data1 = soup.find_all('meta', attrs={'property':'og:image'})
-                text1 = data1[0].get('content').split()
-                user = "Nama: " + text[-2] + "\n"
-                user1 = text[-1]
-                followers = "Pengikut: " + text[0] + "\n"
-                following = "Mengikuti: " + text[2] + "\n"
-                post = "Post: " + text[4] + "\n"
-                link = "Link: " + "https://www.instagram.com/" + instagram
-                detail = "Info Akun: " + user1 + "\n\n"
-                details = " "
-                cl.sendText(msg.to, detail + user + followers + following + post + link + details)
-                cl.sendImageWithURL(msg.to, text1[0])
-            except Exception as njer:
-              	cl.sendText(msg.to, str(njer))
+            elif '/cekig ' in msg.text.lower():
+              try:
+                    instagram = msg.text.lower().replace("/cekig ","")
+                    html = requests.get('https://www.instagram.com/' + instagram + '/?')
+                    soup = BeautifulSoup(html.text, 'html5lib')
+               	    data = soup.find_all('meta', attrs={'property':'og:description'})
+                    text = data[0].get('content').split()
+                    data1 = soup.find_all('meta', attrs={'property':'og:image'})
+                    text1 = data1[0].get('content').split()
+                    user = "Nama: " + text[-2] + "\n"
+                    user1 = text[-1]
+                    followers = "Pengikut: " + text[0] + "\n"
+                    following = "Mengikuti: " + text[2] + "\n"
+                    post = "Post: " + text[4] + "\n"
+                    link = "Link: " + "https://www.instagram.com/" + instagram
+                    detail = "Info Akun: " + user1 + "\n\n"
+                    details = " "
+                    cl.sendText(msg.to, detail + user + followers + following + post + link + details)
+                    cl.sendImageWithURL(msg.to, text1[0])
+              except Exception as njer:
+              	    cl.sendText(msg.to, str(njer))
 
-        elif "Apa " in msg.text:
-                tanya = msg.text.replace("Apakah ","")
-                jawab = ("iya","Tidak","mungkin","bisa jadi")
-                jawaban = random.choice(jawab)
-                tts = gTTS(text=jawaban, lang='id')
-                tts.save('tts.mp3')
-                cl.sendAudio(msg.to,'tts.mp3')
+            elif "Apa " in msg.text:
+                    tanya = msg.text.replace("Apakah ","")
+                    jawab = ("iya","Tidak","mungkin","bisa jadi")
+                    jawaban = random.choice(jawab)
+                    tts = gTTS(text=jawaban, lang='id')
+                    tts.save('tts.mp3')
+                    cl.sendAudio(msg.to,'tts.mp3')
                   
-        elif "Iraha " in msg.text:
-                tanya = msg.text.replace("Kapan ","")
-                jawab = ("kapan  kapan","besok","satu  abad  lagi")
-                jawaban = random.choice(jawab)
-                tts = gTTS(text=jawaban, lang='id')
-                tts.save('tts.mp3')
-                cl.sendAudio(msg.to,'tts.mp3')
+            elif "Iraha " in msg.text:
+                    tanya = msg.text.replace("Kapan ","")
+                    jawab = ("kapan  kapan","besok","satu  abad  lagi")
+                    jawaban = random.choice(jawab)
+                    tts = gTTS(text=jawaban, lang='id')
+                    tts.save('tts.mp3')
+                    cl.sendAudio(msg.to,'tts.mp3')
 #---------------------------------------------------------
             elif msg.text.lower() == '.reboot':
                     print "[Command]Like executed"
