@@ -1331,7 +1331,7 @@ def bot(op):
 
 
 #---------------------------------------------------------
-            elif 'Wikipedia ' in msg.text.lower():
+            elif '/wikipedia ' in msg.text.lower():
                   try:
                       wiki = msg.text.lower().replace("/wikipedia ","")
                       wikipedia.set_lang("id")
@@ -1350,20 +1350,8 @@ def bot(op):
                           except Exception as e:
                               cl.sendText(msg.to, str(e))
 			#---------------------------------------------------------
-            elif "Youtube:" in msg.text.lower():
-                query = msg.text.split(":")
-                try:
-                      if len(query) == 3:
-                          isi = yt(query[2])
-                          hasil = isi[int(query[1])-1]
-                          cl.sendText(msg.to, hasil)
-                      else:
-                          isi = yt(query[1])
-                          cl.sendText(msg.to, isi[0])
-                except Exception as e:
-                          cl.sendText(msg.to, str(e))
-#---------------------------------- SONG ------------------------------------
-            elif "Lirik " in msg.text.lower():
+
+            elif "/lirik " in msg.text.lower():
                 songname = msg.text.replace("/lirik ","")
                 params = {"songname":songname}
                 r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -1373,7 +1361,7 @@ def bot(op):
                     cl.sendText(msg.to,song[5])
                     print "[Command] Lirik"
 
-            elif "Lagu " in msg.text.lower():
+            elif "/lagu " in msg.text.lower():
                 songname = msg.text.replace("/lagu ","")
                 params = {"songname":songname}
                 r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -1385,7 +1373,7 @@ def bot(op):
                     print "[Command] Lagu"
 #----------------------------------------------------------------------------
 #--------------------------------- YOUTUBE ----------------------------------
-            elif "/youtube " in msg.text:
+            elif "Youtube " in msg.text:
                 query = msg.text.replace("/youtube ","")
                 with requests.session() as s:
                     s.headers['user-agent'] = 'Mozilla/5.0'
