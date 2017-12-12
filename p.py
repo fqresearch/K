@@ -49,7 +49,7 @@ Id Group = Melihat id grup
 Group pict  =  Melihat pict grup
 Respon  =  Cek kecepatan bot
 Up  =  Fungsi spam chat
-hoii  =  memanggil semua orang
+Oi  =  memanggil semua orang
 CCTV  =  Melacak sider
 Ciduk  =  Memciduk sider
 Apakah ...  =  Menanyakan jawaban ya atau tidak
@@ -64,7 +64,6 @@ Hay [nama bot]
 Youtube = cari konten youtube
 Jodoh
 Quotes
-Apa ...
 Kapan ...
 """
 
@@ -1377,7 +1376,7 @@ def bot(op):
               except Exception as njer:
               	    cl.sendText(msg.to, str(njer))
 
-            elif "Apa " in msg.text:
+            elif "apakah" in msg.text:
                     tanya = msg.text.replace("Apakah ","")
                     jawab = ("iya","Tidak","mungkin","bisa jadi")
                     jawaban = random.choice(jawab)
@@ -1385,6 +1384,23 @@ def bot(op):
                     tts.save('tts.mp3')
                     cl.sendAudio(msg.to,'tts.mp3')
                   
+            elif "Ingin" in msg.text:
+                    tanya = msg.text.replace("Ingin ","")
+                    jawab = ("Anjing","Hilih Kintil","Ngentot","Kontol","Bangsat Kau","Asu","kentod")
+                    jawaban = random.choice(jawab)
+                    tts = gTTS(text=jawaban, lang='id')
+                    tts.save('tts.mp3')
+                    cl.sendAudio(msg.to,'tts.mp3')
+
+            elif "Wkwk" in msg.text:
+                    tanya = msg.text.replace("Ingin ","")
+                    jawab = ("HAHA","WKWKWKWKWKK","KAKAKAKAKK","555555555","WEKAWEKAWEKAWEKA","NGIKNGIKNGIKNGIK","JIAHAHAHAA")
+                    jawaban = random.choice(jawab)
+                    tts = gTTS(text=jawaban, lang='id')
+                    tts.save('tts.mp3')
+                    cl.sendAudio(msg.to,'tts.mp3')
+                  	
+                  	
             elif "Kapan " in msg.text:
                     tanya = msg.text.replace("Kapan ","")
                     jawab = ("kapan  kapan","besok","satu  abad  lagi")
