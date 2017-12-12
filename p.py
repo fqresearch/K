@@ -1137,7 +1137,7 @@ def bot(op):
                     kk.sendText(msg.to,hiat)
                     hiau = "Hai kak " + kc.getContact(msg.from_).displayName
                     kc.sendText(msg.to,hiau)
-            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang]:
+            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang"]:
                 if msg.from_ in admin:
                     bebj = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿􀄃􀇂Cony happy􏿿"
                     cl.sendText(msg.to,bebj)
