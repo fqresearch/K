@@ -1149,7 +1149,7 @@ def bot(op):
                     bebf = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿"
                     cl.sendText(msg.to,bebf)
                 else:
-                    hig = "sayang pala lu peang kak" + cl.getContact(msg.from_).displayName + "􀜁􀅔Har Har􏿿"
+                    hig = "sayang pala lu peang kak " + cl.getContact(msg.from_).displayName + "􀜁􀅔Har Har􏿿"
                     cl.sendText(msg.to,hig)
             elif msg.text.lower() in ["hay gracia","hai gracia"]:
                 if msg.from_ in admin:
