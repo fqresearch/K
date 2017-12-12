@@ -1838,12 +1838,6 @@ def bot(op):
 #-----------------------------------------------
 
        #-------------Fungsi Respon Start---------------------#
-            elif msg.text in ["Absen"]:
-			  if msg.from_ in admin:
-				cl.sendText(msg.to,"Aku hadir kak 􀄃􀆍moon grin􏿿")
-				ki.sendText(msg.to,"Hai kak aku hadir 􀄃􀇁Cony􏿿")
-				kk.sendText(msg.to,"Aku hadir kak 􀄃􀆌hee􏿿")
-				kc.sendText(msg.to,"Aku juga hadir hehehe 􀄃􀆝aww􏿿")
             elif msg.text in ["Yuhuu"]:
 				cl.sendText(msg.to,"Aku hadir kak 􀄃􀆍moon grin􏿿")
 				ki.sendText(msg.to,"Hai kak aku hadir 􀄃􀇁Cony􏿿")
@@ -2080,6 +2074,12 @@ def bot(op):
 				jawab = ("Ya","Tidak")
 				jawaban = random.choice(jawab)
 				cl.sendText(msg.to,jawaban)
+				
+            elif "Off " in msg.text:
+				ask = msg.text.replace("Off ","")
+				resp = ("Ya","Jangan!","Kaka jahat tingalin aku sendirian","Jangan off dulu dong kak","yah sepi lagi deh")
+				respon = random.choice(resp)
+				cl.sendText(msg.to,respon)
 				
         if op.type == 55:
             try:
