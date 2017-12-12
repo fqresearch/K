@@ -1384,6 +1384,15 @@ def bot(op):
                     tts.save('tts.mp3')
                     cl.sendAudio(msg.to,'tts.mp3')
                   
+            elif "Apa" in msg.text:
+                    tanya = msg.text.replace("Apa ","")
+                    jawab = ("Tanya Osan","Tidak Ada","Wacana ae lu","Ke bulan","Jangan Wacana ae sia goblog")
+                    jawaban = random.choice(jawab)
+                    tts = gTTS(text=jawaban, lang='id')
+                    tts.save('tts.mp3')
+                    cl.sendAudio(msg.to,'tts.mp3')
+                
+			
             elif "ingin" in msg.text:
                     tanya = msg.text.replace("Ingin ","")
                     jawab = ("Anjing","Hilih Kintil","Ngentot","Kontol","Bangsat Kau","Asu","kentod")
