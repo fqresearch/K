@@ -1137,13 +1137,6 @@ def bot(op):
                     kk.sendText(msg.to,hiat)
                     hiau = "Hai kak " + kc.getContact(msg.from_).displayName
                     kc.sendText(msg.to,hiau)
-            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang"]:
-                if msg.from_ in admin:
-                    bebj = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿􀄃􀇂Cony happy􏿿"
-                    cl.sendText(msg.to,bebj)
-                else:
-                    hic = "sayang pala lu peang 􀜁􀅔Har Har􏿿" + cl.getContact(msg.from_).displayName
-                    cl.sendText(msg.to,hic)
             elif msg.text.lower() in ["hay yupi","Hay yupi","Hai yupi"]:
                 if msg.from_ in admin:
                     bebz = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
@@ -1151,6 +1144,13 @@ def bot(op):
                 else:
                     hiz = "Hai kak " + cl.getContact(msg.from_).displayName
                     cl.sendText(msg.to,hiz)
+            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang"]:
+                if msg.from_ in admin:
+                    bebf = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿"
+                    cl.sendText(msg.to,bebf)
+                else:
+                    hig = "sayang pala lu peang 􀜁􀅔Har Har􏿿" + cl.getContact(msg.from_).displayName
+                    cl.sendText(msg.to,hig)
             elif msg.text.lower() in ["hay gracia","Hay gracia","Hai gracia"]:
                 if msg.from_ in admin:
                     bebx = "Hay sayang " + ki.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
@@ -1854,7 +1854,7 @@ def bot(op):
       #-------------Fungsi Balesan Respon Finish---------------------#
 
        #-------------Fungsi Speedbot Start---------------------#
-            elif msg.text in ["Respon","", "Sp", "speed", "Speed"]:
+            elif msg.text in ["Respon", "Sp", "speed", "Speed"]:
                 start = time.time()
                 cl.sendText(msg.to, "Bentar ya kak...")
                 elapsed_time = time.time() - start
