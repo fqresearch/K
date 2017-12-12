@@ -1241,7 +1241,14 @@ def bot(op):
                 except:
                     cover = ""
                 cl.sendText(msg.to,"[Display Name]:\n" + anu.displayName + "\n\n[Mid]:\n" + mid + "\n\n[Bio]:\n" + anu.statusMessage + "\n\n[Foto Profile]:\nhttp://dl.profile.line-cdn.net/" + anu.pictureStatus + "\n\n[Cover]:\n" + str(cover))
-
+            elif "Mybio:" in msg.text:
+                string = msg.text.replace("Mybio:","")
+                if len(string.decode('utf-8')) <= 500:
+                    profile = cl.getProfile()
+                    profile.statusMessage = string
+                    cl.updateProfile(profile)
+                    cl.sendText(msg.to,"Update Bio👉" + string + "")
+#--------------------------------------------------------
 #Fitur random qoute
             elif msg.text in ["Quote","quote","quotes","Quotes","/quote"]:
                 quote = ['Barangsiapa yang suka meninggalkan barang di tempat umum maka ia akan kehilangan barangnya tersebut','Kunci KESUKSESAN itu cuma satu, yakni lu harus BERHASIL','No Smoking']
