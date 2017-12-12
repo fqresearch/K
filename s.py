@@ -1395,7 +1395,7 @@ def bot(op):
                     tts.save('tts.mp3')
                     cl.sendAudio(msg.to,'tts.mp3')
                   
-            elif "Apa" in msg.text:
+            elif "Wacana" in msg.text:
                     tanya = msg.text.replace("Apa ","")
                     jawab = ("Tanya Osan","Tidak Ada","Wacana ae lu","Ke bulan","Jangan Wacana ae sia goblog")
                     jawaban = random.choice(jawab)
