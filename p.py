@@ -37,7 +37,7 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" - Taufiq's BOT v0.48 -
+elpMessage =""" - Fฺ่่่๋iฺ่่่๋zฺ่่่๋ bot -
 
 General command :
 Me  =  Cek akun sendiri
@@ -45,26 +45,19 @@ My mid  =  Cek akun Mid
 Mid @ = Cek mid via tag
 Bot?  =  Cek akun Bot
 Ginfo  =  Group info
-Id Group = Melihat id grup
+List group = Melihat grup
 Group pict  =  Melihat pict grup
-Respon  =  Cek kecepatan bot
+Speedbot  =  Cek kecepatan bot
 Up  =  Fungsi spam chat
-Oi  =  memanggil semua orang
-CCTV  =  Melacak sider
-Ciduk  =  Memciduk sider
+Tagall  =  Mention semua user
+Cek  =  Membuat set point
+Sider  =  Melihat sider dibawah read point
 Apakah ...  =  Menanyakan jawaban ya atau tidak
-Creator  =  Melihat pembuat bot
-Hay = menyapa bot
-Pagi
-Siang
-Sore
-Hay [nama bot]
-/cekig = stalk ig orang
-/wikipedia = cari info di wikipedia
-Youtube = cari konten youtube
-Jodoh
-Quotes
-Kapan ..."""
+Creator  =  Melihat kontak pembuat bot
+
+private command :
+Set group = Melihat private menu"""
+
 
 Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 
