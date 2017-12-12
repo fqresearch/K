@@ -1137,13 +1137,13 @@ def bot(op):
                     kk.sendText(msg.to,hiat)
                     hiau = "Hai kak " + kc.getContact(msg.from_).displayName
                     kc.sendText(msg.to,hiau)
-            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang"]:
+            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang]:
                 if msg.from_ in admin:
-                    bebmm = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿􀄃􀇂Cony happy􏿿"
-                    cl.sendText(msg.to,bebmm)
+                    bebj = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿􀄃􀇂Cony happy􏿿"
+                    cl.sendText(msg.to,bebj)
                 else:
-                    himm = "sayang pala lu peang 􀜁􀅔Har Har􏿿"
-                    cl.sendText(msg.to,himm)
+                    hic = "sayang pala lu peang 􀜁􀅔Har Har􏿿" + cl.getContact(msg.from_).displayName
+                    cl.sendText(msg.to,hic)
             elif msg.text.lower() in ["hay yupi","Hay yupi","Hai yupi"]:
                 if msg.from_ in admin:
                     bebz = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
