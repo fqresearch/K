@@ -777,7 +777,7 @@ def bot(op):
                 cl.sendText(msg.to,msg.to)
             elif msg.text.lower() == "my mid":
                 cl.sendText(msg.to, msg.from_)
-            elif msg.text.lower() == "Mid all":
+            elif msg.text.lower() == "mid all":
 			  if msg.from_ in admin:
 				cl.sendText(msg.to,mid)
 				ki.sendText(msg.to,Amid)
@@ -1060,7 +1060,7 @@ def bot(op):
 				if wait["commentOn"] == True: md+=" Comment : on\n"
 				else:md+=" Comment : off\n"
 				cl.sendText(msg.to,md)
-            elif msg.text.lower() in ["Group id"]:
+            elif msg.text.lower() in ["group id"]:
 			  if msg.from_ in admin:	
 				gid = cl.getGroupIdsJoined()
 				h = ""
@@ -1118,7 +1118,7 @@ def bot(op):
                         cl.sendText(msg.to, "Ketik 'CCTV' dulu kak.")
 #-----------------------------------------------
 #--------------------------------- Hy / HAy ---------------------------------
-            elif msg.text.lower() in ["hay","Hay","Hi"]:
+            elif msg.text.lower() in ["hay","hi"]:
                 if msg.from_ in admin:
                     beb = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     cl.sendText(msg.to,beb)
@@ -1137,42 +1137,42 @@ def bot(op):
                     kk.sendText(msg.to,hiat)
                     hiau = "Hai kak " + kc.getContact(msg.from_).displayName
                     kc.sendText(msg.to,hiau)
-            elif msg.text.lower() in ["hay yupi","Hay yupi","Hai yupi"]:
+            elif msg.text.lower() in ["hay yupi","hai yupi"]:
                 if msg.from_ in admin:
                     bebz = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     cl.sendText(msg.to,bebz)
                 else:
                     hiz = "Hai kak " + cl.getContact(msg.from_).displayName
                     cl.sendText(msg.to,hiz)
-            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang"]:
+            elif msg.text.lower() in ["hay sayang","hai sayang"]:
                 if msg.from_ in admin:
                     bebf = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿"
                     cl.sendText(msg.to,bebf)
                 else:
                     hig = "sayang pala lu peang kak" + cl.getContact(msg.from_).displayName + "􀜁􀅔Har Har􏿿"
                     cl.sendText(msg.to,hig)
-            elif msg.text.lower() in ["hay gracia","Hay gracia","Hai gracia"]:
+            elif msg.text.lower() in ["hay gracia","hai gracia"]:
                 if msg.from_ in admin:
                     bebx = "Hay sayang " + ki.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     ki.sendText(msg.to,bebx)
                 else:
                     hi = "Hai kak " + ki.getContact(msg.from_).displayName
                     ki.sendText(msg.to,hi)
-            elif msg.text.lower() in ["hay anin","Hay anin","Hai anin"]:
+            elif msg.text.lower() in ["hay anin","hai anin"]:
                 if msg.from_ in admin:
                     beby = "Hay sayang " + kk.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     kk.sendText(msg.to,beby)
                 else:
                     hiy = "Hai kak " + kk.getContact(msg.from_).displayName
                     kk.sendText(msg.to,hiy)			
-            elif msg.text.lower() in ["hay ayana","Hay ayana","Hai ayana"]:
+            elif msg.text.lower() in ["hay ayana","hai ayana"]:
                 if msg.from_ in admin:
                     bebu = "Hay sayang " + kc.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     kc.sendText(msg.to,bebu)
                 else:
                     hiu = "Hai kak " + kc.getContact(msg.from_).displayName
                     kc.sendText(msg.to,hiu)
-            elif msg.text.lower() in ["Pagi","pagi"]:
+            elif msg.text.lower() in ["pagi"]:
                 if msg.from_ in admin:
                     pagia = "Pagi sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     cl.sendText(msg.to,pagia)
@@ -1180,7 +1180,7 @@ def bot(op):
                     pagie = "Pagi kak " + cl.getContact(msg.from_).displayName + " \n udah sarapan belum?? \n semangat ya pagi ini 􀄃􀄷heart􏿿"
                     cl.sendText(msg.to,pagie)
 			
-            elif msg.text.lower() in ["Siang","siang"]:
+            elif msg.text.lower() in ["siang"]:
                 if msg.from_ in admin:
                     siangb = "Siang sayang " + ki.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     ki.sendText(msg.to,siangb)
@@ -1188,7 +1188,7 @@ def bot(op):
                     siangf = "Siang kak " + ki.getContact(msg.from_).displayName + " \n walaupun diluar panas \n tapi tetap semangat ya!! 􀄃􀅹hahaha􏿿"
                     ki.sendText(msg.to,siangf)
 		
-            elif msg.text.lower() in ["Sore","sore"]:
+            elif msg.text.lower() in ["sore"]:
                 if msg.from_ in admin:
                     sorec = "Sore sayang " + kk.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     kk.sendText(msg.to,sorec)
@@ -1196,7 +1196,7 @@ def bot(op):
 	            soreg = "Sore kak " + kk.getContact(msg.from_).displayName + " \n ga kerasa udah sore aja ya?? \n pulangnya hati hati dijalan ya kak 􀄃􀄷heart􏿿"
                     kk.sendText(msg.to,soreg)
 
-            elif msg.text.lower() in ["Malam","malam"]:
+            elif msg.text.lower() in ["malam"]:
                 if msg.from_ in admin:
                     malamd = "Malam sayang " + kc.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     kc.sendText(msg.to,malamd)
@@ -1328,7 +1328,7 @@ def bot(op):
 
 
 #---------------------------------------------------------
-            elif '/wikipedia ' in msg.text.lower():
+            elif 'wikipedia ' in msg.text.lower():
                   try:
                       wiki = msg.text.lower().replace("/wikipedia ","")
                       wikipedia.set_lang("id")
@@ -1365,7 +1365,7 @@ def bot(op):
                     print '[Command] Youtube Search'
 #----------------------------------------------------------------------------
 
-            elif '/cekig ' in msg.text.lower():
+            elif 'ig ' in msg.text.lower():
               try:
                     instagram = msg.text.lower().replace("/cekig ","")
                     html = requests.get('https://www.instagram.com/' + instagram + '/?')
@@ -1598,7 +1598,7 @@ def bot(op):
                             pass
          #----------------Fungsi Banned Kick Target Finish----------------------#                
 
-            elif "Sweep this group" in msg.text.lower():
+            elif "sweep this group" in msg.text.lower():
               if msg.from_ in admsa:
                 if msg.toType == 2:
                     print "sweeping"
@@ -1931,7 +1931,7 @@ def bot(op):
                     except:
                         pass
 
-            elif msg.text.lower() == 'Maaf ya':
+            elif msg.text.lower() == 'maaf ya':
 			  if msg.from_ in admsa:
 				gid = cl.getGroupIdsJoined()
 				gid = ki.getGroupIdsJoined()
@@ -1946,7 +1946,7 @@ def bot(op):
 					cl.sendText(msg.to,"Ard Squad bot leaving all groups.")
 				else:
 					cl.sendText(msg.to,"He declined all invitations")
-            elif msg.text.lower() == 'Yupi keluar':
+            elif msg.text.lower() == 'yupi keluar':
 			  if msg.from_ in admsa:
 				gid = cl.getGroupIdsJoined()
 				for i in gid:
@@ -1996,7 +1996,7 @@ def bot(op):
                     else:
                         pass
 						
-            elif msg.text.lower() in ["List group"]:
+            elif msg.text.lower() in ["list group"]:
               if msg.from_ in admin:
 				gid = cl.getGroupIdsJoined()
 				h = ""
