@@ -37,23 +37,34 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" - Fฺ่่่๋iฺ่่่๋zฺ่่่๋ bot -
+helpMessage ="""=====[TAUFIQ BOT v.0.48]=====
 
-General command :
-Me  =  Cek akun sendiri
-My mid  =  Cek akun Mid
-Mid @ = Cek mid via tag
-Bot?  =  Cek akun Bot
-Ginfo  =  Group info
-List group = Melihat grup
-Group pict  =  Melihat pict grup
-Speedbot  =  Cek kecepatan bot
-Up  =  Fungsi spam chat
-Tagall  =  Mention semua user
-Cek  =  Membuat set point
-Sider  =  Melihat sider dibawah read point
-Apakah ...  =  Menanyakan jawaban ya atau tidak
-Creator  =  Melihat kontak pembuat bot
+[C̶̲̅ᴏ̶̲̅ᴍ̶̲̅ᴍ̶̲̅ᴀ̶̲̅ɴ̶̲̅ᴅ̶̲̅]
+☫[Me]
+☫[My mid]
+☫[Mid @]
+☫[Ginfo]
+☫[Respon]
+☫[/pict group]
+☫[/steal dp @]
+☫[/steal home @]
+☫[Absen]
+☫[CCTV]
+☫[Ciduk]
+☫[/cekig]
+☫[/wikipedia]
+☫[Youtube]
+☫[Bilang]
+☫[/en]
+☫[/id]
+☫[Apakah...]
+☫[Jodoh]
+☫[Quote]
+☫[Kapan...]
+☫[Creator]
+☫[Oi]
+☫[Chant,Chant2,Chant3]
+☫[Creator]
 
 private command :
 Set group = Melihat private menu"""
@@ -1126,6 +1137,13 @@ def bot(op):
                     kk.sendText(msg.to,hiat)
                     hiau = "Hai kak " + kc.getContact(msg.from_).displayName
                     kc.sendText(msg.to,hiau)
+            elif msg.text.lower() in ["Hay Sayang","Hay sayang","Hai sayang"]:
+                if msg.from_ in admin:
+                    bebmm = "Hay juga sayang love you " + cl.getContact(msg.from_).displayName + " 􀄃􀆖cony kiss􏿿􀄃􀇂Cony happy􏿿"
+                    cl.sendText(msg.to,bebmm)
+                else:
+                    himm = "sayang pala lu peang 􀜁􀅔Har Har􏿿"
+                    cl.sendText(msg.to,himm)
             elif msg.text.lower() in ["hay yupi","Hay yupi","Hai yupi"]:
                 if msg.from_ in admin:
                     bebz = "Hay sayang " + cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
@@ -1721,15 +1739,15 @@ def bot(op):
            
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Oy"]:
-                cl.sendText(msg.to,"￼Oi Oi Oi ￼")
-                ki.sendText(msg.to,"￼Oi Oi Oi ￼")
-                kk.sendText(msg.to,"￼Oi Oi Oi ￼")
-                kc.sendText(msg.to,"￼Oi Oi Oi ￼")
+                cl.sendText(msg.to,"􀤁􀄥Glowstick􏿿Oi Oi Oi 􀤁􀄥Glowstick􏿿")
+                ki.sendText(msg.to,"􀤁􀄥Glowstick􏿿Oi Oi Oi 􀤁􀄥Glowstick􏿿")
+                kk.sendText(msg.to,"􀤁􀄥Glowstick􏿿Oi Oi Oi 􀤁􀄥Glowstick􏿿")
+                kc.sendText(msg.to,"􀤁􀄥Glowstick􏿿Oi Oi Oi 􀤁􀄥Glowstick􏿿")
 
         #-------------Fungsi Spam Finish---------------------#
 	        #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Chant","chant"]:
-                cl.sendText(msg.to,"￼￼￼￼￼￼")
+                cl.sendText(msg.to,"􀤁􀄥Glowstick􏿿􀤁􀄥Glowstick􏿿􀤁􀄥Glowstick􏿿")
                 cl.sendText(msg.to,"Aaa…Yossha-ikuzo")
                 cl.sendText(msg.to,"Taigaa")
                 cl.sendText(msg.to,"Faiyaa")
@@ -1741,7 +1759,7 @@ def bot(op):
         #-------------Fungsi Spam Finish---------------------#
 	        #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Chant2","chant2"]:
-                ki.sendText(msg.to,"￼￼￼￼￼￼")
+                ki.sendText(msg.to,"􀤁􀄥Glowstick􏿿􀤁􀄥Glowstick􏿿􀤁􀄥Glowstick􏿿")
                 ki.sendText(msg.to,"Aaa…Mou-iccho-ikuzo")
                 ki.sendText(msg.to,"Tora")
                 ki.sendText(msg.to,"Hi")
@@ -1753,7 +1771,7 @@ def bot(op):
         #-------------Fungsi Spam Finish---------------------#
 			    	        #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Chant3","chant3"]:
-                ki.sendText(msg.to,"￼￼￼￼￼￼")
+                ki.sendText(msg.to,"􀤁􀄥Glowstick􏿿􀤁􀄥Glowstick􏿿􀤁􀄥Glowstick􏿿")
                 ki.sendText(msg.to,"Aaa…Mou-iccho-ikuzo")
                 ki.sendText(msg.to,"Chape")
                 ki.sendText(msg.to,"Ape")
@@ -1779,7 +1797,8 @@ def bot(op):
                 kc.sendText(msg.to,"Hai juga kak 􀄃􀆝aww􏿿")
 
 #-----------------------------------------------
-
+            elif msg.text in ["Hai sider","Sider","Woi sider","Oi sider"]:
+                cl.sendText(msg.to,"Jangan diem aja kak sini ikut ramein")
             elif msg.text in ["Yupi","yupi","ipuy","puy"]:
                 cl.sendText(msg.to,"Iya kak? ketik Petunjuk kalo butuh sesuatu ya kak 􀄃􀇁Cony􏿿 ")
             elif msg.text in ["Solat dulu","Maghrib dulu","Magrib dulu","Solat wey"]:
