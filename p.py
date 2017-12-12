@@ -603,11 +603,10 @@ def bot(op):
 					cl.sendText(msg.to,msg.text)
             elif msg.text is None:
                 return
-            elif msg.text.lower() == 'Help':
-                if wait["lang"] == "JP":
-                    cl.sendText(msg.to,helpMessage)
-                else:
-                    cl.sendText(msg.to,helpt)
+#--------------------------------------------------------
+            elif msg.text in ["Key","help","Help","/help"]:
+                cl.sendText(msg.to,helpMessage)
+#--------------------------------------------------------
             elif msg.text.lower() == 'set group':
 				if msg.from_ in admin:
 					if wait["lang"] == "JP":
