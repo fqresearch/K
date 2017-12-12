@@ -64,8 +64,7 @@ Hay [nama bot]
 Youtube = cari konten youtube
 Jodoh
 Quotes
-Kapan ...
-"""
+Kapan ..."""
 
 Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 
