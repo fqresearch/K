@@ -1328,7 +1328,7 @@ def bot(op):
 
 
 #---------------------------------------------------------
-            elif 'wikipedia ' in msg.text.lower():
+            elif '/wikipedia ' in msg.text.lower():
                   try:
                       wiki = msg.text.lower().replace("/wikipedia ","")
                       wikipedia.set_lang("id")
@@ -1365,7 +1365,7 @@ def bot(op):
                     print '[Command] Youtube Search'
 #----------------------------------------------------------------------------
 
-            elif 'ig ' in msg.text.lower():
+            elif '/cekig ' in msg.text.lower():
               try:
                     instagram = msg.text.lower().replace("/cekig ","")
                     html = requests.get('https://www.instagram.com/' + instagram + '/?')
