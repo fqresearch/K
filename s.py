@@ -1090,7 +1090,7 @@ def bot(op):
 						cl.sendText(msg.to,"Can't be used outside the group")
 					else:
 						cl.sendText(msg.to,"Not for use less than group")
-            elif msg.text.lower() == 'CCTV':
+            elif msg.text.lower() == 'cctv':
                     cl.sendText(msg.to, "􀔃􀇜black large square􏿿􁄁􀄍cctv􏿿 CCTV ON 􁄁􀄍kamera􏿿 􀔃􀇜black large square􏿿")
                     try:
                         del wait2['readPoint'][msg.to]
@@ -1103,7 +1103,7 @@ def bot(op):
                     wait2['setTime'][msg.to] = datetime.now().strftime('%Y-%m-%d %H:%M')
                     wait2['ROM'][msg.to] = {}
                     print wait2
-            elif msg.text.lower() == 'Ciduk':
+            elif msg.text.lower() == 'ciduk':
                     if msg.to in wait2['readPoint']:
                         if wait2["ROM"][msg.to].items() == []:
                             chiya = ""
