@@ -1406,7 +1406,7 @@ def bot(op):
 			
             elif "ingin" in msg.text:
                     tanya = msg.text.replace("Ingin ","")
-                    jawab = ("Anjing","Hilih Kintil","Ngentot","Kontol","Bangsat Kau","Asu","kentod")
+                    jawab = ("Kasar","Anjing","Hilih Kintil","Ngentot","Kontol","Bangsat Kau","Asu","kentod")
                     jawaban = random.choice(jawab)
                     tts = gTTS(text=jawaban, lang='id')
                     tts.save('tts.mp3')
@@ -1414,7 +1414,7 @@ def bot(op):
 
             elif "Wkwk" in msg.text:
                     tanya = msg.text.replace("Wkwk ","")
-                    jawab = ("HAHA","WKWKWKWKWKK","Hehehehe","KAKAKAKAKK","XIXIXIXIIXIXI","WEKAWEKAKA","NGIKNGIKNGIK","JIAHAHAA")
+                    jawab = ("HAHAHAHAHAAHA","WKWKWKWKWKK","Hehehehe","KAKAKAKAKK","XIXIXIXIIXIXI","WEKAWEKAKA","NGIKNGIKNGIK","JIAHAHAA")
                     jawaban = random.choice(jawab)
                     tts = gTTS(text=jawaban, lang='id')
                     tts.save('tts.mp3')
