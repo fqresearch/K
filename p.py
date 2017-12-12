@@ -611,7 +611,7 @@ def bot(op):
 					cl.sendText(msg.to,msg.text)
             elif msg.text is None:
                 return
-            elif msg.text.lower() == 'Petunjuk':
+            elif msg.text.lower() == 'Help':
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to,helpMessage)
                 else:
