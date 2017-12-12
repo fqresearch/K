@@ -788,7 +788,7 @@ def bot(op):
                                      "STKID": "100",
                                      "STKPKGID": "1",
                                      "STKVER": "100" }
-                ki.sendMessage(msg)
+                cl.sendMessage(msg)
             elif msg.text in ["Hehehe","Hehe","He","hehehe","hehe","he"]:
                 msg.contentType = 7
                 msg.text = None
@@ -797,25 +797,27 @@ def bot(op):
                                      "STKPKGID": "1",
                                      "STKVER": "100" }
                 ki.sendMessage(msg)
-            elif msg.text in ["Galau"]:
+            elif msg.text in ["Gabut"]:
                 msg.contentType = 7
                 msg.text = None
                 msg.contentMetadata = {
                                      "STKID": "9",
                                      "STKPKGID": "1",
                                      "STKVER": "100" }
-                ki.sendMessage(msg)
                 kk.sendMessage(msg)
-            elif msg.text in ["You"]:
+                kc.sendMessage(msg)
+            elif msg.text in ["Lu"]:
                 msg.contentType = 7
                 msg.text = None
                 msg.contentMetadata = {
                                      "STKID": "7",
                                      "STKPKGID": "1",
                                      "STKVER": "100" }
+                cl.sendMessage(msg)
                 ki.sendMessage(msg)
                 kk.sendMessage(msg)
-            elif msg.text in ["Hadeuh"]:
+                kc.sendMessage(msg)
+            elif msg.text in ["Hadeh"]:
                 msg.contentType = 7
                 msg.text = None
                 msg.contentMetadata = {
